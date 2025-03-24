@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.BaseTest;
@@ -42,6 +43,18 @@ public class UI_Tests extends BaseTest{
 		Log.error("Test Ended");
 	}
 	
+	@Test
+	public void testToIntearctWithCategoriesDropdown() {
+		Log.info("Test Started");
+		
+		page.navigate("https://practicesoftwaretesting.com/");
+		ToolshopHomePage toolsPage = new ToolshopHomePage(page);
+		String category = toolsPage.selectCategories();
+		
+		Assert.assertTrue(category.toUpperCase().contains("POWER TOOLS"), "POWER TOOLS CATEGORY VLIDATED");
+		
+		Log.error("Test Ended");
+	}
 		
 	@Test
 	public void htmlTableTest() {
